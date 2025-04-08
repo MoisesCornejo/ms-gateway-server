@@ -21,6 +21,9 @@ public class SampleGlobalFilter implements GlobalFilter {
 
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
             logger.info("Ejecutando el filtro después del request (Post-filter)");
+
+            exchange.getResponse().getCookies().add("color", ResponseCookie.from("color", "red").build());
+            exchange.getResponse().getHeaders().setContentType(MediaType.TEXT_PLAIN);
         }));
     }
 
