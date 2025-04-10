@@ -3,6 +3,7 @@ package cl.moises.springcloud.msgatewayserver.filters.factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
+import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -26,7 +27,7 @@ public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFacto
 
     @Override
     public GatewayFilter apply(ConfigurationCookie configurationCookie) {
-        return (exchange, chain) -> {
+        return new OrderedGatewayFilter((exchange, chain) -> {
 
             log.info("Ejecutando pre gateway filter factory: {}", configurationCookie.message);
 
@@ -48,7 +49,7 @@ public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFacto
 
                 log.info("Ejecutando post gateway filter factory: {}", configurationCookie.message);
             }));
-        };
+        }, 100);
     }
 
     @Override
