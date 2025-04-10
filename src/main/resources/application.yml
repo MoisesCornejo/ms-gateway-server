@@ -8,12 +8,7 @@ spring:
         - Path=/apigateway/ms-productos/**
         filters:
         - StripPrefix=2
-        - name: SampleCookie
-          args:
-            message: sample-message
-            name: user
-            value: Moises
-
+        - name: SampleCookie=sample-message, user, Moises
       - id: ms-item
         uri: lb://ms-item
         predicates:

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -46,6 +48,11 @@ public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFacto
                 log.info("Ejecutando post gateway filter factory: {}", configurationCookie.message);
             }));
         };
+    }
+
+    @Override
+    public List<String> shortcutFieldOrder() {
+        return Arrays.asList("message", "name", "value");
     }
 
     public static class ConfigurationCookie {
