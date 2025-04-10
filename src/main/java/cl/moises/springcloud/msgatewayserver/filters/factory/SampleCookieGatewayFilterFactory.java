@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+// SOLO SI EL NOMBRE ES DIFERENTE A LA CONVENCION DE NOMBRES ESTANDAR
 public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFactory <SampleCookieGatewayFilterFactory.ConfigurationCookie> {
 
     private final Logger log = LoggerFactory.getLogger(SampleCookieGatewayFilterFactory.class);
@@ -53,6 +54,11 @@ public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFacto
     @Override
     public List<String> shortcutFieldOrder() {
         return Arrays.asList("message", "name", "value");
+    }
+
+    @Override
+    public String name() {
+        return "EjemploCookie";
     }
 
     public static class ConfigurationCookie {
