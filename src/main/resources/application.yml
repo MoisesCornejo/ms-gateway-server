@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: ms-productos
+        uri: lb://ms-productos
+        predicates:
+        - Path=/apigateway/ms-productos/**
+        filters:
+        - StripPrefix=2
+        - name: SampleCookie
+          args:
+            message: sample-message
+            name: user
+            value: Moises
+
+      - id: ms-item
+        uri: lb://ms-item
+        predicates:
+        - Path=/apigateway/ms-items/**
+        filters:
+        - StripPrefix=2
