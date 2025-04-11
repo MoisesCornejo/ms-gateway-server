@@ -7,7 +7,7 @@ spring:
           predicates:
             - Path=/apigateway/ms-productos/**
 #           Condiciones que se deben cumplir para enviar el request al microservicio
-            - Header=token, 12345
+            - Header=token, \d+
             - Method=GET, POST
             - Query=color, red
           filters:
