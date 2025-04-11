@@ -8,10 +8,14 @@ spring:
             - Path=/apigateway/ms-productos/**
           filters:
             - StripPrefix=2
-            - name: EjemploCookie=sample-message, user, Moises
+#            - name: EjemploCookie=sample-message, user, Moises
         - id: ms-item
           uri: lb://ms-item
           predicates:
             - Path=/apigateway/ms-items/**
           filters:
             - StripPrefix=2
+            - AddRequestHeader=token-request, 1hjk2g3df45fs6
+            - AddResponseHeader=token-response, 1hsdjk2g3dfff45fs6
+            - AddRequestParameter=name, Moises
+            - SetResponseHeader=Content-Type, text/plain
