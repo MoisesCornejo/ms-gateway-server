@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -52,15 +50,15 @@ public class SampleCookieGatewayFilterFactory extends AbstractGatewayFilterFacto
         }, 100);
     }
 
-    @Override
-    public List<String> shortcutFieldOrder() {
-        return Arrays.asList("message", "name", "value");
-    }
-
-    @Override
-    public String name() {
-        return "EjemploCookie";
-    }
+//    @Override
+//    public List<String> shortcutFieldOrder() {
+//        return Arrays.asList("message", "name", "value");
+//    }
+//
+//    @Override
+//    public String name() {
+//        return "EjemploCookie";
+//    }
 
     public static class ConfigurationCookie {
 
